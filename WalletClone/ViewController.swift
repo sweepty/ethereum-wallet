@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxDataSources
 
 class ViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var createWalletButton: UIButton!
@@ -19,10 +20,17 @@ class ViewController: UIViewController, UITableViewDelegate {
     var disposeBag = DisposeBag()
     let viewModel = ViewModel()
     
+    var initialState: SectionedTableViewState?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.rx.setDelegate(self).disposed(by: disposeBag)
+        
+        viewModel.walletList.share(replay: 1)
+            .subscribe(onNext: { (sectionData) in
+                self.initialState = SectionedTableViewState(sections: sectionData)
+            }).disposed(by: disposeBag)
         
         setupUI()
         setupBind()
@@ -40,13 +48,75 @@ class ViewController: UIViewController, UITableViewDelegate {
                 self.present(nextVC, animated: true, completion: nil)
         }.disposed(by: disposeBag)
         
-        viewModel.walletList
-            .bind(to: self.tableView.rx.items(cellIdentifier: "cell", cellType: UITableViewCell.self)) { _, wallet, cell in
-                cell.textLabel?.text = wallet.name
-                cell.detailTextLabel?.text = wallet.address
-        }.disposed(by: disposeBag)
+        // RXDATASOURCES
+        let dataSource = RxTableViewSectionedReloadDataSource<SectionOfCustomData>(
+            configureCell: { dataSource, tableView, indexPath, wallet in
+                let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! WalletTableViewCell
+                
+                cell.walletNameLabel?.text = wallet.name
+                cell.addressLabel?.text = wallet.address
+                cell.balanceLabel?.text = Ethereum.getBalance(walletAddress: wallet.address) ?? "err"
+                return cell
+                
+        }, canEditRowAtIndexPath: { dataSource, indexPath in
+            return true
+        })
+        
+//        // Add item
+//        let addCommand = tableView.rx.tap.
+//            .map(TableViewEditingCommand.AppendItem)
+//        // Move item
+//        let moveCommand = tableView.rx.itemDeleted
+//            .map(TableViewEditingCommand.MoveItem)
+        
+        // Delete item
+        let deleteCommand = tableView.rx.itemDeleted.asObservable()
+            .map(TableViewEditingCommand.DeleteItem)
+
+        deleteCommand
+            .observeOn(MainScheduler.asyncInstance)
+            .scan(self.initialState) { (state, command) -> SectionedTableViewState in
+                return (state?.execute(command: command))!
+            }
+            .startWith(initialState)
+            .map {
+                $0!.sections
+            }
+            .share(replay: 1)
+            .bind(to: tableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
         
     }
+}
+
+enum TableViewEditingCommand {
+    case AppendItem(item: Wallet, section: Int)
+    case MoveItem(sourceIndex: IndexPath, destinationIndex: IndexPath)
+    case DeleteItem(IndexPath)
+}
+
+struct SectionedTableViewState {
+    fileprivate var sections: [SectionOfCustomData]
     
+    init(sections: [SectionOfCustomData]) {
+        self.sections = sections
+    }
+    
+    func execute(command: TableViewEditingCommand) -> SectionedTableViewState {
+        switch command {
+        case .DeleteItem(let indexPath):
+            var sections = self.sections
+            var items = sections[indexPath.section].items
+            
+            // core data에서 삭제
+            ETHWallet.deleteWallet(address: items[indexPath.row].address)
+            items.remove(at: indexPath.row)
+            
+            sections[indexPath.section] = SectionOfCustomData(original: sections[indexPath.section], items: items)
+            return SectionedTableViewState(sections: sections)
+        default:
+            return SectionedTableViewState(sections: self.sections)
+        }
+    }
 }
 

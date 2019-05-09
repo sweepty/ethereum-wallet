@@ -9,6 +9,7 @@
 import Foundation
 import Web3swift
 import CoreData
+import RxDataSources
 
 struct Wallet {
     let address: String
@@ -43,6 +44,7 @@ class ETHWallet {
             print("WARNING!!! Failed saving \(error)")
         }
     }
+    
     public static func selectAllWallet() -> [Wallet] {
         var walletObjects = [NSManagedObject]()
         var walletList = [Wallet]()
@@ -73,6 +75,26 @@ class ETHWallet {
         return walletList
     }
     
+    public static func deleteWallet(address: String) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Wallets")
+        fetchRequest.predicate = NSPredicate(format: "address == %@", address)
+        
+        let fetch = try! managedContext.fetch(fetchRequest)
+        let objectToDelete = fetch[0]
+        managedContext.delete(objectToDelete)
+        
+        do {
+            try managedContext.save()
+        } catch {
+            print("ERROR \(error)")
+        }
+    }
+    
     // Get Keystore Manager from wallet data
     public static func generateKeystoreManager(wallet: Wallet) -> KeystoreManager {
         let data = wallet.data
@@ -89,12 +111,24 @@ class ETHWallet {
         return keystoreManager
     }
     
-    // extract privatekey - THIS IS A UNSAFE FUNCTION
+    // extract privatekey using password - THIS IS A UNSAFE FUNCTION
     public static func extractPrivateKey(password: String, wallet: Wallet) -> String {
         let ethereumAddress = EthereumAddress(wallet.address)!
         let keystoreManager = generateKeystoreManager(wallet: wallet)
         let pkData = try! keystoreManager.UNSAFE_getPrivateKeyData(password: password, account: ethereumAddress).toHexString()
         
         return pkData
+    }
+}
+
+// RXDATASOURCES
+struct SectionOfCustomData {
+    var items: [Wallet]
+}
+
+extension SectionOfCustomData: SectionModelType {
+    init(original: SectionOfCustomData, items: [Wallet]) {
+        self = original
+        self.items = items
     }
 }

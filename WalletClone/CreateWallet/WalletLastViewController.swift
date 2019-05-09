@@ -37,7 +37,7 @@ class WalletLastViewController: UIViewController {
     }
     
     private func setupBind() {
-        self.viewModel.walletList.onNext(ETHWallet.selectAllWallet())
+//        self.viewModel.walletList.onNext(ETHWallet.selectAllWallet())
         
         viewModel.walletList
             .subscribe(onNext: { (wallet) in

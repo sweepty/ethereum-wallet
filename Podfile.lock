@@ -2,6 +2,7 @@ PODS:
   - BigInt (3.1.0):
     - SipHash (~> 1.2)
   - CryptoSwift (1.0.0)
+  - Differentiator (3.1.0)
   - PromiseKit (6.8.4):
     - PromiseKit/CorePromise (= 6.8.4)
     - PromiseKit/Foundation (= 6.8.4)
@@ -13,6 +14,10 @@ PODS:
     - PromiseKit/CorePromise
   - RxCocoa (4.5.0):
     - RxSwift (>= 4.4.2, ~> 4.4)
+  - RxDataSources (3.1.0):
+    - Differentiator (~> 3.0)
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
   - RxSwift (4.5.0)
   - secp256k1_swift (1.0.3)
   - SipHash (1.2.2)
@@ -26,6 +31,7 @@ PODS:
 
 DEPENDENCIES:
   - RxCocoa (~> 4.0)
+  - RxDataSources (~> 3.0)
   - RxSwift (~> 4.0)
   - web3swift (~> 2.1.3)
 
@@ -33,8 +39,10 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - BigInt
     - CryptoSwift
+    - Differentiator
     - PromiseKit
     - RxCocoa
+    - RxDataSources
     - RxSwift
     - secp256k1_swift
     - SipHash
@@ -44,14 +52,16 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   BigInt: 76b5dfdfa3e2e478d4ffdf161aeede5502e2742f
   CryptoSwift: d81eeaa59dc5a8d03720fe919a6fd07b51f7439f
+  Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
   PromiseKit: 51794a832647e7b819336dc2279039ce9f1cc49b
   RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
+  RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
   RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
   secp256k1_swift: 4fc5c4b2d2c6d21ee8ccb868cdc92da12f38bed9
   SipHash: fad90a4683e420c52ef28063063dbbce248ea6d4
   Starscream: 08172b481e145289c4930cb567230fb55897cfa4
   web3swift: 6db59e73e2bcb99dde081088d0242382155690c9
 
-PODFILE CHECKSUM: 378f821249606039b2ade149bc3db8b1d45b7e85
+PODFILE CHECKSUM: b28b768bd6c3a99c97aedea99f3c86dae192f06b
 
 COCOAPODS: 1.5.3

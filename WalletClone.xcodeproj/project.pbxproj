@@ -15,6 +15,7 @@
 		1B25ED71227A98E1006F83F4 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B25ED70227A98E1006F83F4 /* String+.swift */; };
 		1B373E45227C038E00603240 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B373E44227C038E00603240 /* Wallet.swift */; };
 		1B373E48227C324F00603240 /* WalletModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1B373E46227C324F00603240 /* WalletModel.xcdatamodeld */; };
+		1B57BAC82283B2B700AFBD7E /* WalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B57BAC72283B2B700AFBD7E /* WalletTableViewCell.swift */; };
 		1B5E6F47227AC4DA00871EF6 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E6F46227AC4DA00871EF6 /* ViewModel.swift */; };
 		1B9B4D5A228275DB00C345BD /* Ethereum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9B4D59228275DB00C345BD /* Ethereum.swift */; };
 		1B9B4D5C22827EB800C345BD /* CreateWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9B4D5B22827EB800C345BD /* CreateWalletViewController.swift */; };
@@ -35,6 +36,7 @@
 		1B25ED70227A98E1006F83F4 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		1B373E44227C038E00603240 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		1B373E47227C324F00603240 /* WalletModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WalletModel.xcdatamodel; sourceTree = "<group>"; };
+		1B57BAC72283B2B700AFBD7E /* WalletTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTableViewCell.swift; sourceTree = "<group>"; };
 		1B5E6F46227AC4DA00871EF6 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		1B9B4D59228275DB00C345BD /* Ethereum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ethereum.swift; sourceTree = "<group>"; };
 		1B9B4D5B22827EB800C345BD /* CreateWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWalletViewController.swift; sourceTree = "<group>"; };
@@ -82,11 +84,12 @@
 				1B5C8E96227C39F30010DE12 /* Supporting Files */,
 				1B9B4D60228282E100C345BD /* Model */,
 				1B9B4D5F228282C400C345BD /* CreateWallet */,
-				1B25ED6A227A9772006F83F4 /* Info.plist */,
 				1B25ED60227A9770006F83F4 /* ViewController.swift */,
 				1B25ED62227A9770006F83F4 /* Main.storyboard */,
+				1B57BAC72283B2B700AFBD7E /* WalletTableViewCell.swift */,
 				1B25ED70227A98E1006F83F4 /* String+.swift */,
 				1B373E46227C324F00603240 /* WalletModel.xcdatamodeld */,
+				1B25ED6A227A9772006F83F4 /* Info.plist */,
 			);
 			path = WalletClone;
 			sourceTree = "<group>";
@@ -220,8 +223,10 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-WalletClone/Pods-WalletClone-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
@@ -234,8 +239,10 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigInt.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
@@ -283,6 +290,7 @@
 				1B25ED71227A98E1006F83F4 /* String+.swift in Sources */,
 				1B9B4D642282A3FD00C345BD /* WalletLastViewController.swift in Sources */,
 				1B5E6F47227AC4DA00871EF6 /* ViewModel.swift in Sources */,
+				1B57BAC82283B2B700AFBD7E /* WalletTableViewCell.swift in Sources */,
 				1B25ED5F227A9770006F83F4 /* AppDelegate.swift in Sources */,
 				1B9B4D5C22827EB800C345BD /* CreateWalletViewController.swift in Sources */,
 				1B9B4D5A228275DB00C345BD /* Ethereum.swift in Sources */,

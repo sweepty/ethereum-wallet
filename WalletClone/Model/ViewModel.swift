@@ -12,12 +12,12 @@ import RxCocoa
 import Web3swift
 
 class ViewModel {
-    let statusText: BehaviorSubject<String>
-    let walletList: BehaviorSubject<[Wallet]>
+    let statusText: PublishSubject<String>
+    let walletList: BehaviorSubject<[SectionOfCustomData]>
     
     init() {
-        self.statusText = BehaviorSubject<String>(value: "Weak")
+        self.statusText = PublishSubject<String>()
         let wallets = ETHWallet.selectAllWallet()
-        self.walletList = BehaviorSubject<[Wallet]>(value: wallets)
+        self.walletList = BehaviorSubject<[SectionOfCustomData]>(value: [SectionOfCustomData(items: wallets)])
     }
 }

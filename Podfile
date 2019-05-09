@@ -9,5 +9,5 @@ target 'WalletClone' do
   pod 'RxSwift', '~> 4.0'
   pod 'RxCocoa', '~> 4.0'
   pod 'web3swift', '~> 2.1.3' 
-
+  pod 'RxDataSources', '~> 3.0'
 end
