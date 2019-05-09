@@ -11,23 +11,23 @@ import Web3swift
 import BigInt
 
 struct Ethereum {
-    // Ropsten Infura Endpoint Provider
-    let web3 = Web3.InfuraMainnetWeb3()
-    
-//    static var endpointProvider: web3 {
+    static var endpointProvider: web3 {
 //        let userdefaultsNetwork = UserDefaults.standard.integer(forKey: "network")
-//
-//        switch userdefaultsNetwork {
-//        case 0:
-//            return Web3.InfuraMainnetWeb3()
-//        default:
-//            return Web3.InfuraRopstenWeb3()
-//        }
-//    }
+        // 임시
+        let userdefaultsNetwork: Int = 0
+
+        switch userdefaultsNetwork {
+        case 0:
+            return Web3.InfuraMainnetWeb3()
+        default:
+            return Web3.InfuraRopstenWeb3()
+        }
+    }
     
     // get balance
-    func getBalance(walletAddress: EthereumAddress) -> String? {
-        let balanceResult = try! web3.eth.getBalance(address: walletAddress)
+    static func getBalance(walletAddress: String) -> String? {
+        let ethAddress = EthereumAddress(walletAddress)!
+        let balanceResult = try! endpointProvider.eth.getBalance(address: ethAddress)
         let balanceString = Web3.Utils.formatToEthereumUnits(balanceResult, toUnits: .eth, decimals: 3)!
         
         return balanceString
