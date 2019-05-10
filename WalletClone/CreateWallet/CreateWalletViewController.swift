@@ -77,7 +77,7 @@ class CreateWalletViewController: UIViewController {
     
     func validatePassword() {
         let passwordValid = passwordTextField.rx.text.orEmpty
-            .map { $0.vaildate() }
+            .map { $0.validate() }
             .share(replay: 1)
         
         passwordValid
