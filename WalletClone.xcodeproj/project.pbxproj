@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B0DF76E228557FD0070837A /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0DF76D228557FD0070837A /* NetworkViewController.swift */; };
+		1B0DF77022855E540070837A /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0DF76F22855E540070837A /* UIView+.swift */; };
 		1B25ED5F227A9770006F83F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B25ED5E227A9770006F83F4 /* AppDelegate.swift */; };
 		1B25ED61227A9770006F83F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B25ED60227A9770006F83F4 /* ViewController.swift */; };
 		1B25ED64227A9770006F83F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B25ED62227A9770006F83F4 /* Main.storyboard */; };
@@ -26,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1B0DF76D228557FD0070837A /* NetworkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkViewController.swift; sourceTree = "<group>"; };
+		1B0DF76F22855E540070837A /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		1B25ED5B227A9770006F83F4 /* WalletClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalletClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B25ED5E227A9770006F83F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B25ED60227A9770006F83F4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
