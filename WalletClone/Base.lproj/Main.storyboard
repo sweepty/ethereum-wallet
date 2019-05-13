@@ -104,64 +104,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Gb-OE-oVl">
-                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
-                            </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ltb-tu-2BF">
-                                <rect key="frame" x="0.0" y="342" width="375" height="435"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZSl-dm-JSO">
+                                <rect key="frame" x="0.0" y="672" width="375" height="140"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZSl-dm-JSO">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="435"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A16-Qe-sn7">
-                                                <rect key="frame" x="160.66666666666666" y="29" width="54" height="30"/>
-                                                <state key="normal" title="Dismiss">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yY8-y1-5bZ">
-                                                <rect key="frame" x="164" y="176" width="42" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.30840110780000002" green="0.5618229508" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstItem="A16-Qe-sn7" firstAttribute="top" secondItem="ZSl-dm-JSO" secondAttribute="top" constant="29" id="3Qv-7i-cbk"/>
-                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yY8-y1-5bZ" secondAttribute="trailing" constant="20" symbolic="YES" id="F5b-Pn-EQT"/>
-                                            <constraint firstItem="yY8-y1-5bZ" firstAttribute="top" secondItem="ZSl-dm-JSO" secondAttribute="top" constant="176" id="N4F-Gx-HlG"/>
-                                            <constraint firstItem="yY8-y1-5bZ" firstAttribute="leading" secondItem="ZSl-dm-JSO" secondAttribute="leading" constant="164" id="aQI-Rg-rgt"/>
-                                            <constraint firstItem="A16-Qe-sn7" firstAttribute="centerX" secondItem="ZSl-dm-JSO" secondAttribute="centerX" id="wQm-SN-m6j"/>
-                                        </constraints>
-                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yY8-y1-5bZ">
+                                        <rect key="frame" x="29" y="96" width="317" height="145"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent purus urna, vehicula volutpat ex pharetra, blandit imperdiet ante. </string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A16-Qe-sn7">
+                                        <rect key="frame" x="160" y="8" width="54" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Dismiss">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="ZSl-dm-JSO" firstAttribute="centerY" secondItem="Ltb-tu-2BF" secondAttribute="centerY" id="4fa-4K-qIh"/>
-                                    <constraint firstAttribute="bottom" secondItem="ZSl-dm-JSO" secondAttribute="bottom" id="IhX-PA-WwL"/>
-                                    <constraint firstAttribute="trailing" secondItem="ZSl-dm-JSO" secondAttribute="trailing" id="TzH-1M-dsA"/>
-                                    <constraint firstItem="ZSl-dm-JSO" firstAttribute="top" secondItem="Ltb-tu-2BF" secondAttribute="top" id="eKj-Uu-U34"/>
-                                    <constraint firstItem="ZSl-dm-JSO" firstAttribute="centerX" secondItem="Ltb-tu-2BF" secondAttribute="centerX" id="gDa-FW-uUV"/>
-                                    <constraint firstItem="ZSl-dm-JSO" firstAttribute="leading" secondItem="Ltb-tu-2BF" secondAttribute="leading" id="twA-my-xwJ"/>
-                                </constraints>
-                            </scrollView>
+                                <color key="backgroundColor" red="0.30840110780000002" green="0.5618229508" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="MBj-1X-fbq" firstAttribute="trailing" secondItem="6Gb-OE-oVl" secondAttribute="trailing" id="IMv-iN-ZpK"/>
-                            <constraint firstItem="Ltb-tu-2BF" firstAttribute="trailing" secondItem="6Gb-OE-oVl" secondAttribute="trailing" id="Jqr-gg-cii"/>
-                            <constraint firstItem="MBj-1X-fbq" firstAttribute="bottom" secondItem="6Gb-OE-oVl" secondAttribute="bottom" id="PJB-BQ-QFR"/>
-                            <constraint firstItem="Ltb-tu-2BF" firstAttribute="leading" secondItem="6Gb-OE-oVl" secondAttribute="leading" id="ZTk-fk-ewm"/>
-                            <constraint firstItem="6Gb-OE-oVl" firstAttribute="top" secondItem="MBj-1X-fbq" secondAttribute="top" id="c6I-5J-0PN"/>
-                            <constraint firstItem="6Gb-OE-oVl" firstAttribute="leading" secondItem="IMZ-Bl-TkV" secondAttribute="leading" id="eP9-YV-T56"/>
-                            <constraint firstItem="MBj-1X-fbq" firstAttribute="bottom" secondItem="Ltb-tu-2BF" secondAttribute="bottom" constant="1" id="h6A-3m-Q3p"/>
-                            <constraint firstItem="Ltb-tu-2BF" firstAttribute="top" secondItem="MBj-1X-fbq" secondAttribute="top" constant="298" id="wYk-x7-zhy"/>
+                            <constraint firstItem="ZSl-dm-JSO" firstAttribute="top" secondItem="MBj-1X-fbq" secondAttribute="top" constant="628" id="ORE-lO-AwZ"/>
+                            <constraint firstItem="ZSl-dm-JSO" firstAttribute="leading" secondItem="IMZ-Bl-TkV" secondAttribute="leading" id="P8v-a3-mgI"/>
+                            <constraint firstAttribute="bottom" secondItem="ZSl-dm-JSO" secondAttribute="bottom" id="R9i-RV-Lw7"/>
+                            <constraint firstAttribute="trailing" secondItem="ZSl-dm-JSO" secondAttribute="trailing" id="eld-qb-qQd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MBj-1X-fbq"/>
                     </view>
                     <connections>
-                        <outlet property="backImageView" destination="6Gb-OE-oVl" id="6CZ-ql-khC"/>
                         <outlet property="dismissButton" destination="A16-Qe-sn7" id="Vhw-uG-rzO"/>
+                        <outlet property="networkView" destination="ZSl-dm-JSO" id="mEx-ST-cuo"/>
+                        <outlet property="viewBottomConstraint" destination="R9i-RV-Lw7" id="ZSg-sk-uvc"/>
+                        <outlet property="viewTopConstraint" destination="ORE-lO-AwZ" id="nXx-K4-sAx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="41O-TC-Rpj" userLabel="First Responder" sceneMemberID="firstResponder"/>

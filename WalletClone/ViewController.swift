@@ -75,7 +75,8 @@ class ViewController: UIViewController, UITableViewDelegate {
         selectNetworkBarButton.rx.tap.asControlEvent()
             .subscribe { (_) in
                 let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Network") as! NetworkViewController
-                nextVC.snapShotImage = self.view.makeSnapshot()!
+                nextVC.modalTransitionStyle = .crossDissolve
+                nextVC.modalPresentationStyle = .overCurrentContext
                 self.present(nextVC, animated: true, completion: nil)
         }.disposed(by: disposeBag)
         
