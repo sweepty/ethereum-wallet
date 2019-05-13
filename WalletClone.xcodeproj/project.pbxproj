@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1B0DF76E228557FD0070837A /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0DF76D228557FD0070837A /* NetworkViewController.swift */; };
-		1B0DF77022855E540070837A /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0DF76F22855E540070837A /* UIView+.swift */; };
 		1B25ED5F227A9770006F83F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B25ED5E227A9770006F83F4 /* AppDelegate.swift */; };
 		1B25ED61227A9770006F83F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B25ED60227A9770006F83F4 /* ViewController.swift */; };
 		1B25ED64227A9770006F83F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B25ED62227A9770006F83F4 /* Main.storyboard */; };
 		1B25ED66227A9772006F83F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B25ED65227A9772006F83F4 /* Assets.xcassets */; };
 		1B25ED69227A9772006F83F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B25ED67227A9772006F83F4 /* LaunchScreen.storyboard */; };
-		1B25ED71227A98E1006F83F4 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B25ED70227A98E1006F83F4 /* String+.swift */; };
+		1B35F7422288FC0B009F0BBB /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B35F73F2288FC0B009F0BBB /* UIView+.swift */; };
+		1B35F7432288FC0B009F0BBB /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B35F7402288FC0B009F0BBB /* String+.swift */; };
+		1B35F7442288FC0B009F0BBB /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B35F7412288FC0B009F0BBB /* UIColor+.swift */; };
+		1B35F7492288FE20009F0BBB /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B35F7482288FE20009F0BBB /* NetworkViewController.swift */; };
+		1B35F74C2288FFD1009F0BBB /* ImportWallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B35F74B2288FFD1009F0BBB /* ImportWallet.storyboard */; };
+		1B35F74E2289016A009F0BBB /* ImportPKViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B35F74D2289016A009F0BBB /* ImportPKViewController.swift */; };
+		1B35F75022890198009F0BBB /* ImportNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B35F74F22890198009F0BBB /* ImportNameViewController.swift */; };
 		1B373E45227C038E00603240 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B373E44227C038E00603240 /* Wallet.swift */; };
 		1B373E48227C324F00603240 /* WalletModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1B373E46227C324F00603240 /* WalletModel.xcdatamodeld */; };
 		1B57BAC82283B2B700AFBD7E /* WalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B57BAC72283B2B700AFBD7E /* WalletTableViewCell.swift */; };
@@ -28,8 +32,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1B0DF76D228557FD0070837A /* NetworkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkViewController.swift; sourceTree = "<group>"; };
-		1B0DF76F22855E540070837A /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		1B25ED5B227A9770006F83F4 /* WalletClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalletClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B25ED5E227A9770006F83F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B25ED60227A9770006F83F4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -37,7 +39,13 @@
 		1B25ED65227A9772006F83F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1B25ED68227A9772006F83F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1B25ED6A227A9772006F83F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1B25ED70227A98E1006F83F4 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		1B35F73F2288FC0B009F0BBB /* UIView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		1B35F7402288FC0B009F0BBB /* String+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		1B35F7412288FC0B009F0BBB /* UIColor+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		1B35F7482288FE20009F0BBB /* NetworkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkViewController.swift; sourceTree = "<group>"; };
+		1B35F74B2288FFD1009F0BBB /* ImportWallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ImportWallet.storyboard; sourceTree = "<group>"; };
+		1B35F74D2289016A009F0BBB /* ImportPKViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportPKViewController.swift; sourceTree = "<group>"; };
+		1B35F74F22890198009F0BBB /* ImportNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportNameViewController.swift; sourceTree = "<group>"; };
 		1B373E44227C038E00603240 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		1B373E47227C324F00603240 /* WalletModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WalletModel.xcdatamodel; sourceTree = "<group>"; };
 		1B57BAC72283B2B700AFBD7E /* WalletTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTableViewCell.swift; sourceTree = "<group>"; };
@@ -85,17 +93,40 @@
 		1B25ED5D227A9770006F83F4 /* WalletClone */ = {
 			isa = PBXGroup;
 			children = (
+				1B35F74A2288FFBF009F0BBB /* ImportWallet */,
+				1B35F73E2288FC0B009F0BBB /* Extensions */,
 				1B5C8E96227C39F30010DE12 /* Supporting Files */,
 				1B9B4D60228282E100C345BD /* Model */,
 				1B9B4D5F228282C400C345BD /* CreateWallet */,
 				1B25ED60227A9770006F83F4 /* ViewController.swift */,
 				1B25ED62227A9770006F83F4 /* Main.storyboard */,
 				1B57BAC72283B2B700AFBD7E /* WalletTableViewCell.swift */,
-				1B25ED70227A98E1006F83F4 /* String+.swift */,
 				1B373E46227C324F00603240 /* WalletModel.xcdatamodeld */,
+				1B35F7482288FE20009F0BBB /* NetworkViewController.swift */,
 				1B25ED6A227A9772006F83F4 /* Info.plist */,
 			);
 			path = WalletClone;
+			sourceTree = "<group>";
+		};
+		1B35F73E2288FC0B009F0BBB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1B35F73F2288FC0B009F0BBB /* UIView+.swift */,
+				1B35F7402288FC0B009F0BBB /* String+.swift */,
+				1B35F7412288FC0B009F0BBB /* UIColor+.swift */,
+			);
+			name = Extensions;
+			path = WalletClone/Extensions;
+			sourceTree = SOURCE_ROOT;
+		};
+		1B35F74A2288FFBF009F0BBB /* ImportWallet */ = {
+			isa = PBXGroup;
+			children = (
+				1B35F74B2288FFD1009F0BBB /* ImportWallet.storyboard */,
+				1B35F74D2289016A009F0BBB /* ImportPKViewController.swift */,
+				1B35F74F22890198009F0BBB /* ImportNameViewController.swift */,
+			);
+			path = ImportWallet;
 			sourceTree = "<group>";
 		};
 		1B5C8E96227C39F30010DE12 /* Supporting Files */ = {
@@ -208,6 +239,7 @@
 			files = (
 				1B25ED69227A9772006F83F4 /* LaunchScreen.storyboard in Resources */,
 				1B25ED66227A9772006F83F4 /* Assets.xcassets in Resources */,
+				1B35F74C2288FFD1009F0BBB /* ImportWallet.storyboard in Resources */,
 				1B25ED64227A9770006F83F4 /* Main.storyboard in Resources */,
 				1B9B4D5E22827ED500C345BD /* CreateWallet.storyboard in Resources */,
 			);
@@ -287,17 +319,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B35F7422288FC0B009F0BBB /* UIView+.swift in Sources */,
 				1B373E45227C038E00603240 /* Wallet.swift in Sources */,
 				1B25ED61227A9770006F83F4 /* ViewController.swift in Sources */,
 				1B373E48227C324F00603240 /* WalletModel.xcdatamodeld in Sources */,
+				1B35F75022890198009F0BBB /* ImportNameViewController.swift in Sources */,
 				1B9B4D62228295AE00C345BD /* WalletNameViewController.swift in Sources */,
-				1B25ED71227A98E1006F83F4 /* String+.swift in Sources */,
+				1B35F7492288FE20009F0BBB /* NetworkViewController.swift in Sources */,
 				1B9B4D642282A3FD00C345BD /* WalletLastViewController.swift in Sources */,
 				1B5E6F47227AC4DA00871EF6 /* ViewModel.swift in Sources */,
 				1B57BAC82283B2B700AFBD7E /* WalletTableViewCell.swift in Sources */,
 				1B25ED5F227A9770006F83F4 /* AppDelegate.swift in Sources */,
+				1B35F7432288FC0B009F0BBB /* String+.swift in Sources */,
+				1B35F74E2289016A009F0BBB /* ImportPKViewController.swift in Sources */,
 				1B9B4D5C22827EB800C345BD /* CreateWalletViewController.swift in Sources */,
 				1B9B4D5A228275DB00C345BD /* Ethereum.swift in Sources */,
+				1B35F7442288FC0B009F0BBB /* UIColor+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

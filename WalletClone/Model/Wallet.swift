@@ -10,6 +10,7 @@ import Foundation
 import Web3swift
 import CoreData
 import RxDataSources
+import secp256k1_swift
 
 struct Wallet {
     let address: String
@@ -27,6 +28,18 @@ class ETHWallet {
         let keyData = try! JSONEncoder().encode(keystore.keystoreParams)
         let address = keystore.addresses!.first!.address
         let wallet = Wallet(address: address, data: keyData, name: name, isHD: false, date: Date())
+        return wallet
+    }
+    
+    // Import account with private key
+    public static func importWallet(privateKey: String, password: String, name: String) -> Wallet {
+        let formattedKey = privateKey.trimmingCharacters(in: .whitespacesAndNewlines)
+        let dataKey = Data.fromHex(formattedKey)!
+        let keystore = try! EthereumKeystoreV3(privateKey: dataKey, password: password)!
+        let keyData = try! JSONEncoder().encode(keystore.keystoreParams)
+        let address = keystore.addresses!.first!.address
+        let wallet = Wallet(address: address, data: keyData, name: name, isHD: false, date: Date())
+        
         return wallet
     }
     

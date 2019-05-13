@@ -88,7 +88,7 @@
                     <connections>
                         <outlet property="createWalletButton" destination="3Zs-Ot-5z0" id="gtf-ha-dyW"/>
                         <outlet property="importWalletButton" destination="F9V-88-KXx" id="Ryh-Ju-wX8"/>
-                        <outlet property="selectNetworkBarButton" destination="wXo-Jr-n4g" id="26c-fc-mMP"/>
+                        <outlet property="selectNetworkBarButton" destination="wXo-Jr-n4g" id="SrW-Fw-jsd"/>
                         <outlet property="tableView" destination="kU4-hH-ERg" id="LIh-G4-VSY"/>
                     </connections>
                 </viewController>

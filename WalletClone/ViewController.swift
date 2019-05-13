@@ -15,6 +15,8 @@ class ViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var createWalletButton: UIButton!
     @IBOutlet weak var importWalletButton: UIButton!
     
+    @IBOutlet weak var selectNetworkBarButton: UIBarButtonItem!
+    
     @IBOutlet weak var tableView: UITableView!
     
     var disposeBag = DisposeBag()
@@ -50,6 +52,12 @@ class ViewController: UIViewController, UITableViewDelegate {
                 self.present(nextVC, animated: true, completion: nil)
         }.disposed(by: disposeBag)
         
+        importWalletButton.rx.tap.asControlEvent()
+            .subscribe { (_) in
+                let nextVC = UIStoryboard(name: "ImportWallet", bundle: nil).instantiateViewController(withIdentifier: "ImportRoot")
+                self.present(nextVC, animated: true, completion: nil)
+        }.disposed(by: disposeBag)
+        
         // RXDATASOURCES
         let dataSource = RxTableViewSectionedReloadDataSource<SectionOfCustomData>(
             configureCell: { dataSource, tableView, indexPath, wallet in
@@ -63,6 +71,13 @@ class ViewController: UIViewController, UITableViewDelegate {
         }, canEditRowAtIndexPath: { dataSource, indexPath in
             return true
         })
+        
+        selectNetworkBarButton.rx.tap.asControlEvent()
+            .subscribe { (_) in
+                let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Network") as! NetworkViewController
+                nextVC.snapShotImage = self.view.makeSnapshot()!
+                self.present(nextVC, animated: true, completion: nil)
+        }.disposed(by: disposeBag)
         
 //        // Add item
 //        let addCommand = tableView.rx.tap.
