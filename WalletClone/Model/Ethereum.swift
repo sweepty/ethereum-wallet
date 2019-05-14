@@ -12,13 +12,13 @@ import BigInt
 
 struct Ethereum {
     static var endpointProvider: web3 {
-//        let userdefaultsNetwork = UserDefaults.standard.integer(forKey: "network")
-        // 임시
-        let userdefaultsNetwork: Int = 0
+        let userdefaultsNetwork = UserDefaults.standard.integer(forKey: "network")
 
         switch userdefaultsNetwork {
         case 0:
             return Web3.InfuraMainnetWeb3()
+        case 1:
+            return Web3.InfuraRinkebyWeb3()
         default:
             return Web3.InfuraRopstenWeb3()
         }

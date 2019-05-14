@@ -18,7 +18,12 @@ class NetworkViewController: UIViewController {
     @IBOutlet weak var viewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var viewBottomConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     let disposeBag = DisposeBag()
+    
+    let networks: [String] = ["Mainnet", "Rinkeby", "Ropsten"]
+    let colorChips: [UIColor] = [UIColor.red, UIColor.blue, UIColor.darkGray]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,10 +32,8 @@ class NetworkViewController: UIViewController {
         
         // https://stackoverflow.com/a/48661043
         networkView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(dismissView)))
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         up()
+        
     }
     
     @objc func dismissView(_ sender: UIPanGestureRecognizer) {
@@ -91,5 +94,35 @@ class NetworkViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
+}
+
+extension NetworkViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! NetworkCollectionViewCell
+        cell.colorView.backgroundColor = colorChips[indexPath.row]
+        cell.networkLabel.text = networks[indexPath.row]
+        
+        
+        if UserDefaults.standard.integer(forKey: "network") == indexPath.row {
+            cell.backgroundColor = UIColor.iconMain
+        }
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        
+        UserDefaults.standard.set(indexPath.row, forKey: "network")
+        self.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension NetworkViewController: UICollectionViewDelegate {
 
 }

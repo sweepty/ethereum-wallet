@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxDataSources
+import Web3swift
 
 class ViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var createWalletButton: UIButton!
@@ -103,6 +104,44 @@ class ViewController: UIViewController, UITableViewDelegate {
             .share(replay: 1)
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
+
+        tableView.rx.modelSelected(Wallet.self)
+            .subscribe(onNext: { (wallet) in
+                let inputPasswordAlert = UIAlertController(title: "지갑 비밀번호 입력", message: "지갑 비밀번호를 입력하세요.", preferredStyle: .alert)
+                inputPasswordAlert.addTextField(configurationHandler: { (textField) in
+                    textField.placeholder = "Password"
+                    textField.isSecureTextEntry = true
+                })
+                // 임시
+                let wallet2 = Wallet(address: wallet.address, data: wallet.data, name: wallet.name, isHD: false, date: wallet.date)
+
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                    let checker = try? ETHWallet.extractPrivateKey(password: inputPasswordAlert.textFields?.first?.text ?? "", wallet: wallet2)
+                    
+                    if checker != nil {
+                        let txVC = UIStoryboard(name: "Transaction", bundle: nil).instantiateViewController(withIdentifier: "SendTransaction") as! SendTransactionViewController
+                        txVC.wallet = wallet2
+                        self.navigationController?.pushViewController(txVC, animated: true)
+                        
+                    } else {
+                        let wrongAlert = UIAlertController(title: "잘못된 비번", message: nil, preferredStyle: .alert)
+                        let onlyOK = UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                            self.present(inputPasswordAlert, animated: true, completion: nil)
+                        })
+                        wrongAlert.addAction(onlyOK)
+                        
+                        self.present(wrongAlert, animated: true)
+                    }
+                })
+                
+                let cancel = UIAlertAction(title: "Cancel", style: .default) { (alertAction) in }
+                
+                // add actions
+                inputPasswordAlert.addAction(cancel)
+                inputPasswordAlert.addAction(okAction)
+                
+                self.present(inputPasswordAlert, animated: true, completion: nil)
+            }).disposed(by: disposeBag)
         
     }
 }

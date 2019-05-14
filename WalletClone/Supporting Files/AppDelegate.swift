@@ -17,6 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Default network is mainnet.
+        guard UserDefaults.standard.string(forKey: "network") != nil else {
+            // 네트워크 설정
+            UserDefaults.standard.set(0, forKey: "network")
+            return true
+        }
         return true
     }
 
