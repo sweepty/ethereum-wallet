@@ -121,7 +121,8 @@ class ViewController: UIViewController, UITableViewDelegate {
                     if checker != nil {
                         let txVC = UIStoryboard(name: "Transaction", bundle: nil).instantiateViewController(withIdentifier: "SendTransaction") as! SendTransactionViewController
                         txVC.wallet = wallet2
-                        self.navigationController?.pushViewController(txVC, animated: true)
+                        txVC.password = (inputPasswordAlert.textFields?.first!.text)!
+                        self.present(txVC, animated: true, completion: nil)
                         
                     } else {
                         let wrongAlert = UIAlertController(title: "잘못된 비번", message: nil, preferredStyle: .alert)
