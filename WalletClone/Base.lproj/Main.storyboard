@@ -63,11 +63,17 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JgM-qC-AkM">
+                                                    <rect key="frame" x="259" y="6" width="99" height="35"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="주소 복사"/>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="addressLabel" destination="ebq-ya-oAb" id="wtO-Mc-ZEL"/>
                                             <outlet property="balanceLabel" destination="xLg-ta-b0p" id="uIb-mT-Bvc"/>
+                                            <outlet property="copyAddressButton" destination="JgM-qC-AkM" id="oTU-mv-XRR"/>
                                             <outlet property="walletNameLabel" destination="aBm-mt-pog" id="sst-AC-Ape"/>
                                         </connections>
                                     </tableViewCell>
@@ -94,7 +100,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="omd-vJ-2Bq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1425" y="71"/>
+            <point key="canvasLocation" x="1424.8" y="70.935960591133011"/>
         </scene>
         <!--Network View Controller-->
         <scene sceneID="5wo-kk-MuT">
