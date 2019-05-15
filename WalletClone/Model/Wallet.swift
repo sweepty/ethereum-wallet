@@ -11,6 +11,7 @@ import Web3swift
 import CoreData
 import RxDataSources
 import secp256k1_swift
+import BigInt
 
 struct Wallet {
     let address: String
@@ -77,7 +78,7 @@ class ETHWallet {
                 let newWallet = Wallet(address: data.value(forKey: "address") as! String,
                                        data: data.value(forKey: "data") as! Data,
                                        name: data.value(forKey: "name") as! String,
-                                       isHD: true,
+                                       isHD: false,
                                        date: data.value(forKey: "date") as! Date)
                 walletList.append(newWallet)
             }
@@ -125,12 +126,59 @@ class ETHWallet {
     }
     
     // extract privatekey using password - THIS IS A UNSAFE FUNCTION
-    public static func extractPrivateKey(password: String, wallet: Wallet) -> String {
+    public static func extractPrivateKey(password: String, wallet: Wallet) throws -> String {
         let ethereumAddress = EthereumAddress(wallet.address)!
         let keystoreManager = generateKeystoreManager(wallet: wallet)
-        let pkData = try! keystoreManager.UNSAFE_getPrivateKeyData(password: password, account: ethereumAddress).toHexString()
         
+        guard let pkData = try? keystoreManager.UNSAFE_getPrivateKeyData(password: password, account: ethereumAddress).toHexString() else {
+            throw AbstractKeystoreError.invalidPasswordError
+        }
         return pkData
+    }
+    
+    public static func generateSendTransaction(value: String,
+                                                    fromAddressString: String,
+                                                    toAddressString: String,
+                                                    gasPrice: TransactionOptions.GasPricePolicy = .automatic,
+                                                    gasLimit: TransactionOptions.GasLimitPolicy = .automatic) -> WriteTransaction {
+        let walletAddress = EthereumAddress(fromAddressString)! // Your wallet address
+        let toAddress = EthereumAddress(toAddressString)!
+        let contract = Ethereum.endpointProvider.contract(Web3.Utils.coldWalletABI, at: toAddress, abiVersion: 2)!
+        let amount = Web3.Utils.parseToBigUInt(value, units: .eth)
+        
+        var options = TransactionOptions.defaultOptions
+        options.value = amount
+        options.from = walletAddress
+        options.gasPrice = gasPrice
+        options.gasLimit = gasLimit
+        
+        let tx = contract.write(
+            "fallback",
+            parameters: [AnyObject](),
+            extraData: Data(),
+            transactionOptions: options)!
+        
+        return tx
+    }
+    
+//    public static func sendTransaction(transaction: WriteTransaction, password: String) throws -> TransactionSendingResult? {
+//        do {
+//            let result = try transaction.send(password: password)
+//            return result
+//        } catch {
+//            print(error)
+//            return nil
+//        }
+//    }
+    
+    public static func sendTransaction(transaction: WriteTransaction, password: String) -> TransactionSendingResult? {
+        do {
+            let result = try transaction.send(password: password)
+            return result
+        } catch {
+            print("역시 여기인가")
+            return nil
+        }
     }
 }
 
