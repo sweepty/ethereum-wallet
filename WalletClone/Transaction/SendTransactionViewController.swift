@@ -54,10 +54,18 @@ class SendTransactionViewController: UIViewController {
     }
     
     private func setupUI() {
+        
+        self.toStatusLabel.isHidden = true
+        
+        self.amountTextField.delegate = self
+        self.gasLimitTextField.delegate = self
+        
         // GAS PRICE
         self.gasPriceSlider.minimumValue = 1.0
         self.gasPriceSlider.maximumValue = 99.0
         self.gasPriceSlider.value = 21.0
+        
+        self.amountTextField.becomeFirstResponder()
     }
     
     private func setupBind() {
@@ -111,23 +119,26 @@ class SendTransactionViewController: UIViewController {
             .bind(to: amountStatusLabel.rx.isHidden)
             .disposed(by: disposeBag)
         
-        // to address check
-        let toStatus = toTextField.rx.text.orEmpty.share(replay: 1)
-        
-        toStatus
-            .map { EthereumAddress($0)?.isValid ?? false }
+        viewModel.toAvaliable
+            .distinctUntilChanged()
             .bind(to: toStatusLabel.rx.isHidden)
             .disposed(by: disposeBag)
         
-        // 입력을 완료했을 때로 변경하기
-        toStatus
-            .subscribe(onNext: { (address) in
-                if EthereumAddress(address)?.isValid ?? false {
-                    self.viewModel.toStatus.onNext("good")
-                } else {
-                    self.viewModel.toStatus.onNext("유효하지 않은 주소입니다.")
-                }
+        // to address check
+        let toStatus = toTextField.rx.text.orEmpty.share(replay: 1)
+        let toTest = toTextField.rx.controlEvent(.editingDidEnd)
+        
+        toTest
+            .subscribe(onNext: { (_) in
+                print("우와")
+                
+                toStatus
+                    .map { EthereumAddress($0)?.isValid ?? false }
+                    .bind(to: self.viewModel.toAvaliable)
+                    .disposed(by: self.disposeBag)
+                
             }).disposed(by: disposeBag)
+        
         
         let gasStatus = gasLimitTextField.rx.text.orEmpty
             .map { Int($0)! >= 0 }
@@ -148,35 +159,21 @@ class SendTransactionViewController: UIViewController {
             .subscribe { (_) in
                 let gasPrice = BigUInt(self.gasPriceSlider.value)
                 let gasLimit = BigUInt(self.gasLimitTextField.text ?? "0")
-                
+
                 // default policies
                 var pricePolicy: TransactionOptions.GasPricePolicy = .automatic
                 var limitPolicy: TransactionOptions.GasLimitPolicy = .automatic
-                
+
                 if gasPrice != 21 {
                     pricePolicy = .manual(gasPrice)
                 }
-                
+
                 if gasLimit != self.defaultGasLimit {
                     limitPolicy = .manual(gasLimit!)
                 }
                 
-//                let tx = ETHWallet.generateSendTransaction(value: self.amountTextField.text!, fromAddressString: self.wallet!.address, toAddressString: self.toTextField.text!, gasPrice: pricePolicy, gasLimit: limitPolicy)
-                let tx = ETHWallet.generateSendTransaction(value: "1.0", fromAddressString: self.wallet!.address, toAddressString: self.toTextField.text!, gasPrice: .automatic, gasLimit: .automatic)
-                
-//                let txResult = ETHWallet.sendTransaction(transaction: tx, password: self.password)
-//
-////                Observable.just(ETHWallet.sendTransaction(transaction: tx, password: self.password))
-////                    .bind(to: viewModel.result)
-////                    .dis
-                
-                self.viewModel.result.onNext(ETHWallet.sendTransaction(transaction: tx, password: self.password)!)
-                
-                let txResultVC = UIStoryboard(name: "Transaction", bundle: nil).instantiateViewController(withIdentifier: "TxResult") as! TxResultViewController
-                
-                self.present(txResultVC, animated: true, completion: nil)
-                
             }.disposed(by: disposeBag)
+        
         viewModel.balance.onNext(BigUInt(Ethereum.getBalance(walletAddress: self.wallet!.address)!)!)
         
     }
@@ -191,4 +188,27 @@ class SendTransactionViewController: UIViewController {
     }
     */
 
+}
+
+extension SendTransactionViewController: UITextFieldDelegate {
+    // 숫자와 decimal(1번)만 가능하도록 함.
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        var invalidCharacters = CharacterSet()
+        
+        switch textField {
+        case self.amountTextField:
+            invalidCharacters = CharacterSet(charactersIn: "0123456789.").inverted
+            
+            if let dots = textField.text?.components(separatedBy: ".") , dots.count > 1 && string == "." {
+                return false
+            }
+            return string.rangeOfCharacter(from: invalidCharacters) == nil
+            
+        case self.gasLimitTextField:
+            invalidCharacters = CharacterSet(charactersIn: "0123456789").inverted
+            return string.rangeOfCharacter(from: invalidCharacters) == nil
+        default:
+            return true
+        }
+    }
 }

@@ -27,6 +27,8 @@ class TransactionViewModel {
     
     let avaliable: PublishSubject<Bool>
     
+    let toAvaliable: PublishSubject<Bool>
+    
     let result: PublishSubject<TransactionSendingResult>
     
     let disposeBag = DisposeBag()
@@ -43,6 +45,7 @@ class TransactionViewModel {
         
         self.estimatedGas = PublishSubject<String>()
         self.avaliable = PublishSubject<Bool>()
+        self.toAvaliable = PublishSubject<Bool>()
         
         self.result = PublishSubject<TransactionSendingResult>()
 
@@ -55,6 +58,13 @@ class TransactionViewModel {
             .distinctUntilChanged()
             .subscribe(onNext: { (checker) in
                 checker ? self.amountStaus.onNext("보유 수량보다 작은 값을 입력하세요.") : self.amountStaus.onNext("GOOD")
+            }).disposed(by: disposeBag)
+        
+        
+        toAvaliable.asObservable()
+            .distinctUntilChanged()
+            .subscribe(onNext: { (checker) in
+                checker ? self.toStatus.onNext("GOOD") : self.toStatus.onNext("유효하지 않은 주소입니다.")
             }).disposed(by: disposeBag)
         
     }
