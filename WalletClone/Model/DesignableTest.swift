@@ -19,3 +19,14 @@ class Circle: UIView {
         }
     }
 }
+
+@IBDesignable
+class CardView: UIView {
+    @IBInspectable var cornerRadius: Double {
+        get {
+            return Double(self.layer.cornerRadius)
+        } set {
+            self.layer.cornerRadius = CGFloat(self.layer.bounds.width/30)
+        }
+    }
+}

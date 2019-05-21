@@ -42,7 +42,7 @@ class ViewController: UIViewController, UITableViewDelegate {
     private func setupUI() {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.title = "My Wallet"
-        self.tableView.rowHeight = 125
+        self.tableView.rowHeight = 185
         
     }
     
