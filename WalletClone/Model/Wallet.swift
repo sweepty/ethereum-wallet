@@ -136,21 +136,31 @@ class ETHWallet {
         return pkData
     }
     
-    public static func generateSendTransaction(value: String,
-                                                    fromAddressString: String,
-                                                    toAddressString: String,
-                                                    gasPrice: TransactionOptions.GasPricePolicy = .automatic,
-                                                    gasLimit: TransactionOptions.GasLimitPolicy = .automatic) -> WriteTransaction {
-        let walletAddress = EthereumAddress(fromAddressString)! // Your wallet address
+    /// Create transaction and send that.
+    public static func sendTransaction(value: String,
+                                               fromAddressString: String,
+                                               toAddressString: String,
+                                               gasPricePolicy: TransactionOptions.GasPricePolicy,
+                                               gasLimitPolicy: TransactionOptions.GasLimitPolicy,
+                                               password: String,
+                                               wallet: Wallet,
+                                               completion: @escaping(_: Result<TransactionSendingResult, Error>) -> Void) {
+        
+        let walletAddress = EthereumAddress(fromAddressString)!
         let toAddress = EthereumAddress(toAddressString)!
-        let contract = Ethereum.endpointProvider.contract(Web3.Utils.coldWalletABI, at: toAddress, abiVersion: 2)!
+        let provider = Ethereum.endpointProvider
+        
+        let keystore = self.generateKeystoreManager(wallet: wallet)
+        provider.addKeystoreManager(keystore)
+        
+        let contract = provider.contract(Web3.Utils.coldWalletABI, at: toAddress, abiVersion: 2)!
         let amount = Web3.Utils.parseToBigUInt(value, units: .eth)
         
         var options = TransactionOptions.defaultOptions
         options.value = amount
         options.from = walletAddress
-        options.gasPrice = gasPrice
-        options.gasLimit = gasLimit
+        options.gasPrice = gasPricePolicy
+        options.gasLimit = gasLimitPolicy
         
         let tx = contract.write(
             "fallback",
@@ -158,26 +168,13 @@ class ETHWallet {
             extraData: Data(),
             transactionOptions: options)!
         
-        return tx
-    }
-    
-//    public static func sendTransaction(transaction: WriteTransaction, password: String) throws -> TransactionSendingResult? {
-//        do {
-//            let result = try transaction.send(password: password)
-//            return result
-//        } catch {
-//            print(error)
-//            return nil
-//        }
-//    }
-    
-    public static func sendTransaction(transaction: WriteTransaction, password: String) -> TransactionSendingResult? {
         do {
-            let result = try transaction.send(password: password)
-            return result
+            let result = try tx.send(password: password)
+            completion(.success(result))
+            return
         } catch {
-            print("역시 여기인가")
-            return nil
+            completion(.failure(error))
+            return
         }
     }
 }
