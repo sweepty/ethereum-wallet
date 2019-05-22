@@ -128,10 +128,7 @@ class SendTransactionViewController: UIViewController {
         let toStatus = toTextField.rx.text.orEmpty.share(replay: 1)
         let toTest = toTextField.rx.controlEvent(.editingDidEnd)
         
-        toTest
-            .subscribe(onNext: { (_) in
-                print("우와")
-                
+        toTest.subscribe(onNext: { (_) in
                 toStatus
                     .map { EthereumAddress($0)?.isValid ?? false }
                     .bind(to: self.viewModel.toAvaliable)
@@ -172,10 +169,39 @@ class SendTransactionViewController: UIViewController {
                     limitPolicy = .manual(gasLimit!)
                 }
                 
+                ETHWallet.sendTransaction(value: self.amountTextField.text!, fromAddressString: self.wallet!.address,
+                                                   toAddressString: self.toTextField.text!, gasPricePolicy: pricePolicy,
+                                                   gasLimitPolicy: limitPolicy, password: self.password,
+                                                   wallet: self.wallet!, completion: { (result) in
+                switch result {
+                    case .success(let txResult):
+                        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "TxResult") as! TxResultViewController
+                        nextVC.txResult = txResult
+                        nextVC.modalTransitionStyle = .crossDissolve
+                        nextVC.modalPresentationStyle = .overCurrentContext
+                        self.present(nextVC, animated: true, completion: nil)
+
+                    case .failure(let error):
+                        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+                        let cancel = UIAlertAction(title: "OK", style: .default, handler: nil)
+                        alert.addAction(cancel)
+                        alert.present(self, animated: true, completion: nil)
+                    }
+                })
+                    // 테스트용
+//                let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "TxResult") as! TxResultViewController
+//                nextVC.modalTransitionStyle = .crossDissolve
+//                nextVC.modalPresentationStyle = .overCurrentContext
+//                self.present(nextVC, animated: true, completion: nil)
+                
             }.disposed(by: disposeBag)
         
-        viewModel.balance.onNext(BigUInt(Ethereum.getBalance(walletAddress: self.wallet!.address)!)!)
+        cancelButton.rx.controlEvent(.touchUpInside)
+            .subscribe(onNext: { (_) in
+                self.dismiss(animated: true, completion: nil)
+            }).disposed(by: disposeBag)
         
+        viewModel.balance.onNext(BigUInt(Double(Ethereum.getBalance(walletAddress: self.wallet!.address)!)!))
     }
 
     /*

@@ -12,8 +12,7 @@ import RxCocoa
 import Web3swift
 
 class TxResultViewController: UIViewController {
-
-    @IBOutlet weak var txTestLabel: UILabel!
+    
     @IBOutlet weak var hashLabel: UILabel!
     @IBOutlet weak var doneButton: UIButton!
     
@@ -26,23 +25,12 @@ class TxResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.1)
-        
-        let resultOb = viewModel.result.share(replay: 1)
-        
-        resultOb
-            .map { $0.transaction.txhash }
-            .bind(to: txTestLabel.rx.text)
-            .disposed(by: disposeBag)
-        
-        resultOb
-            .map { $0.hash }
-            .bind(to: hashLabel.rx.text)
-            .disposed(by: disposeBag)
+        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+        self.hashLabel.text = txResult?.hash
         
         doneButton.rx.controlEvent(.touchUpInside)
             .subscribe { (_) in
-                self.dismiss(animated: true, completion: nil)
+                self.presentingViewController?.presentingViewController?.dismiss(animated: false, completion: nil)
             }.disposed(by: disposeBag)
     }
     
