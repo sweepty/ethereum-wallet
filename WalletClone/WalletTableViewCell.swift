@@ -16,15 +16,13 @@ class WalletTableViewCell: UITableViewCell {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var balanceLabel: UILabel!
     @IBOutlet weak var copyAddressButton: UIButton!
+    @IBOutlet weak var qrCodeButton: UIButton!
+    
+    let cellBag = DisposeBag()
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        copyAddressButton.rx.tap.asControlEvent()
-            .subscribe { (_) in
-                UIPasteboard.general.string = self.addressLabel.text
-        }
         
     }
 

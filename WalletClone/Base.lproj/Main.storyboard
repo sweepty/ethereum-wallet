@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--My Wallet-->
         <scene sceneID="NiR-T5-SPh">
             <objects>
                 <viewController id="X1s-oy-gKl" customClass="ViewController" customModule="WalletClone" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,16 +18,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F9V-88-KXx">
-                                <rect key="frame" x="87" y="222" width="200" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="import Wallet with privateKey"/>
-                            </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kU4-hH-ERg">
-                                <rect key="frame" x="0.0" y="283" width="375" height="529"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kU4-hH-ERg">
+                                <rect key="frame" x="0.0" y="140" width="375" height="672"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <viewLayoutGuide key="safeArea" id="mHa-2f-Wl7"/>
                                 <color key="sectionIndexBackgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="qRq-PH-2np">
+                                    <rect key="frame" x="0.0" y="213" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Zs-Ot-5z0">
+                                            <rect key="frame" x="25" y="0.0" width="92" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Create Wallet"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F9V-88-KXx">
+                                            <rect key="frame" x="156" y="0.0" width="200" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="import Wallet with privateKey"/>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="185" id="U4f-92-3Aw" customClass="WalletTableViewCell" customModule="WalletClone" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="185"/>
@@ -72,8 +84,13 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <state key="normal" title="주소 복사"/>
                                                         </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wAQ-dC-7iW">
+                                                            <rect key="frame" x="283" y="88" width="25" height="25"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <state key="normal" image="QRCode"/>
+                                                        </button>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" red="0.016770729492676089" green="0.67346541611891575" blue="0.89572249660812187" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                             <real key="value" value="0.0"/>
@@ -93,27 +110,32 @@
                                             <outlet property="addressLabel" destination="ebq-ya-oAb" id="wtO-Mc-ZEL"/>
                                             <outlet property="balanceLabel" destination="xLg-ta-b0p" id="uIb-mT-Bvc"/>
                                             <outlet property="copyAddressButton" destination="JgM-qC-AkM" id="oTU-mv-XRR"/>
+                                            <outlet property="qrCodeButton" destination="wAQ-dC-7iW" id="5ro-tv-j1L"/>
                                             <outlet property="walletNameLabel" destination="aBm-mt-pog" id="sst-AC-Ape"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Zs-Ot-5z0">
-                                <rect key="frame" x="141" y="173" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Create Wallet"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kU4-hH-ERg" firstAttribute="top" secondItem="dVq-HM-fTt" secondAttribute="top" id="Lxt-5k-WKK"/>
+                            <constraint firstItem="kU4-hH-ERg" firstAttribute="trailing" secondItem="dVq-HM-fTt" secondAttribute="trailing" id="Pl8-S2-nSH"/>
+                            <constraint firstAttribute="bottom" secondItem="kU4-hH-ERg" secondAttribute="bottom" id="Z6e-Yv-hYg"/>
+                            <constraint firstAttribute="bottom" secondItem="kU4-hH-ERg" secondAttribute="bottom" id="ikb-bP-ueE"/>
+                            <constraint firstItem="kU4-hH-ERg" firstAttribute="leading" secondItem="dVq-HM-fTt" secondAttribute="leading" id="kRX-Zp-Dqd"/>
+                            <constraint firstItem="kU4-hH-ERg" firstAttribute="leading" secondItem="dVq-HM-fTt" secondAttribute="leading" id="ovJ-nm-62l"/>
+                            <constraint firstItem="kU4-hH-ERg" firstAttribute="trailing" secondItem="dVq-HM-fTt" secondAttribute="trailing" id="y2v-13-Aby"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="dVq-HM-fTt"/>
                     </view>
-                    <navigationItem key="navigationItem" id="BhN-Uf-dG8">
+                    <navigationItem key="navigationItem" title="My Wallet" largeTitleDisplayMode="always" id="BhN-Uf-dG8">
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="wXo-Jr-n4g"/>
                     </navigationItem>
                     <connections>
                         <outlet property="createWalletButton" destination="3Zs-Ot-5z0" id="gtf-ha-dyW"/>
                         <outlet property="importWalletButton" destination="F9V-88-KXx" id="Ryh-Ju-wX8"/>
-                        <outlet property="selectNetworkBarButton" destination="wXo-Jr-n4g" id="SrW-Fw-jsd"/>
+                        <outlet property="selectNetworkBarButton" destination="wXo-Jr-n4g" id="lcD-5R-ZgO"/>
                         <outlet property="tableView" destination="kU4-hH-ERg" id="LIh-G4-VSY"/>
                     </connections>
                 </viewController>
@@ -211,13 +233,116 @@
             </objects>
             <point key="canvasLocation" x="2152.8000000000002" y="70.935960591133011"/>
         </scene>
+        <!--Code View Controller-->
+        <scene sceneID="Dqv-na-Try">
+            <objects>
+                <viewController storyboardIdentifier="QRCode" useStoryboardIdentifierAsRestorationIdentifier="YES" id="egS-Lb-L3z" customClass="QRCodeViewController" customModule="WalletClone" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gzR-gu-Mvf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rbI-Wu-jnF" customClass="CardView" customModule="WalletClone" customModuleProvider="target">
+                                <rect key="frame" x="37.666666666666657" y="86.333333333333314" width="300" height="649.33333333333348"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kd5-tV-ZJQ">
+                                        <rect key="frame" x="75" y="172.33333333333337" width="150" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="kd5-tV-ZJQ" secondAttribute="height" multiplier="1:1" id="vnU-md-hBS"/>
+                                        </constraints>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n75-26-8vI" customClass="CardView" customModule="WalletClone" customModuleProvider="target">
+                                        <rect key="frame" x="15" y="367" width="270" height="65"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0xaDa599Ef86d79bBAD6A0e1582417C52D6C502Bfb" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZA-nU-0S7">
+                                                <rect key="frame" x="10" y="0.0" width="189" height="65"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B6r-bw-HjZ">
+                                                <rect key="frame" x="224.00000000000003" y="19.333333333333371" width="26" height="26"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="B6r-bw-HjZ" secondAttribute="height" multiplier="1:1" id="bYp-Kq-hHD"/>
+                                                </constraints>
+                                                <state key="normal" image="Copy"/>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="B6r-bw-HjZ" firstAttribute="centerY" secondItem="n75-26-8vI" secondAttribute="centerY" id="C6k-Z2-frf"/>
+                                            <constraint firstItem="CZA-nU-0S7" firstAttribute="width" secondItem="n75-26-8vI" secondAttribute="width" multiplier="0.7" id="HqY-Ru-axR"/>
+                                            <constraint firstItem="CZA-nU-0S7" firstAttribute="centerY" secondItem="n75-26-8vI" secondAttribute="centerY" id="SzY-tR-4Ln"/>
+                                            <constraint firstAttribute="trailing" secondItem="B6r-bw-HjZ" secondAttribute="trailing" constant="20" id="UCk-S0-U4J"/>
+                                            <constraint firstItem="CZA-nU-0S7" firstAttribute="leading" secondItem="n75-26-8vI" secondAttribute="leading" constant="10" id="c24-EN-0AE"/>
+                                            <constraint firstItem="B6r-bw-HjZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="CZA-nU-0S7" secondAttribute="trailing" constant="8" symbolic="YES" id="dWo-QM-njK"/>
+                                            <constraint firstItem="B6r-bw-HjZ" firstAttribute="height" secondItem="n75-26-8vI" secondAttribute="height" multiplier="0.4" id="w6z-dS-ZMz"/>
+                                            <constraint firstItem="CZA-nU-0S7" firstAttribute="height" secondItem="n75-26-8vI" secondAttribute="height" id="wdT-mY-3RJ"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your ETH address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oq1-Lg-wzx">
+                                        <rect key="frame" x="20.333333333333343" y="65.000000000000014" width="236.00000000000003" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XyW-2S-ZGY">
+                                        <rect key="frame" x="20" y="14" width="25" height="25"/>
+                                        <state key="normal" image="Cancel"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="kd5-tV-ZJQ" firstAttribute="width" secondItem="rbI-Wu-jnF" secondAttribute="width" multiplier="0.5" id="6Er-0s-1AB"/>
+                                    <constraint firstItem="oq1-Lg-wzx" firstAttribute="leading" secondItem="rbI-Wu-jnF" secondAttribute="leading" constant="20.333333333333343" id="EMN-Xf-JYA"/>
+                                    <constraint firstItem="kd5-tV-ZJQ" firstAttribute="centerX" secondItem="rbI-Wu-jnF" secondAttribute="centerX" id="MQh-gr-21a"/>
+                                    <constraint firstItem="n75-26-8vI" firstAttribute="top" secondItem="kd5-tV-ZJQ" secondAttribute="bottom" constant="44.666666666666629" id="WwZ-WD-yH1"/>
+                                    <constraint firstItem="n75-26-8vI" firstAttribute="height" secondItem="rbI-Wu-jnF" secondAttribute="height" multiplier="0.1" id="Xpb-Ww-akb"/>
+                                    <constraint firstItem="XyW-2S-ZGY" firstAttribute="top" secondItem="rbI-Wu-jnF" secondAttribute="top" constant="14" id="cCq-g3-REl"/>
+                                    <constraint firstItem="n75-26-8vI" firstAttribute="centerX" secondItem="kd5-tV-ZJQ" secondAttribute="centerX" id="dXO-NL-Vau"/>
+                                    <constraint firstItem="XyW-2S-ZGY" firstAttribute="leading" secondItem="rbI-Wu-jnF" secondAttribute="leading" constant="20" id="hfi-Q0-tlE"/>
+                                    <constraint firstItem="n75-26-8vI" firstAttribute="width" secondItem="rbI-Wu-jnF" secondAttribute="width" multiplier="0.9" id="hrI-sH-OZi"/>
+                                    <constraint firstItem="oq1-Lg-wzx" firstAttribute="top" secondItem="XyW-2S-ZGY" secondAttribute="bottom" constant="26" id="j8f-X7-DqK"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="rbI-Wu-jnF" firstAttribute="centerY" secondItem="Age-pA-ltA" secondAttribute="centerY" id="2wI-vi-4fY"/>
+                            <constraint firstItem="rbI-Wu-jnF" firstAttribute="height" secondItem="gzR-gu-Mvf" secondAttribute="height" multiplier="0.8" id="60O-VE-lDN"/>
+                            <constraint firstItem="kd5-tV-ZJQ" firstAttribute="top" secondItem="rbI-Wu-jnF" secondAttribute="top" multiplier="3" id="ipo-AM-egb"/>
+                            <constraint firstItem="rbI-Wu-jnF" firstAttribute="centerX" secondItem="Age-pA-ltA" secondAttribute="centerX" id="kZi-rJ-Mrw"/>
+                            <constraint firstItem="rbI-Wu-jnF" firstAttribute="width" secondItem="gzR-gu-Mvf" secondAttribute="width" multiplier="0.8" id="oe1-F0-RPf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Age-pA-ltA"/>
+                    </view>
+                    <connections>
+                        <outlet property="addressLabel" destination="CZA-nU-0S7" id="YLU-N9-uwU"/>
+                        <outlet property="cancelButton" destination="XyW-2S-ZGY" id="TWK-NE-Am5"/>
+                        <outlet property="copyButton" destination="B6r-bw-HjZ" id="RAA-YN-qrM"/>
+                        <outlet property="qrImageView" destination="kd5-tV-ZJQ" id="1VW-mw-u3b"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dqP-EP-0xv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2872.8000000000002" y="70.935960591133011"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Z1r-Yj-Vqz">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AyV-KJ-rY9" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="URX-VX-qfu">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="URX-VX-qfu">
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -230,4 +355,9 @@
             <point key="canvasLocation" x="629.60000000000002" y="70.935960591133011"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Cancel" width="25" height="25"/>
+        <image name="Copy" width="25" height="25"/>
+        <image name="QRCode" width="25" height="25"/>
+    </resources>
 </document>

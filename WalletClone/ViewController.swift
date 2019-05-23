@@ -40,8 +40,6 @@ class ViewController: UIViewController, UITableViewDelegate {
     }
     
     private func setupUI() {
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.title = "My Wallet"
         self.tableView.rowHeight = 185
         
     }
@@ -67,6 +65,16 @@ class ViewController: UIViewController, UITableViewDelegate {
                 cell.walletNameLabel?.text = wallet.name
                 cell.addressLabel?.text = wallet.address
                 cell.balanceLabel?.text = Ethereum.getBalance(walletAddress: wallet.address) ?? "err"
+                
+                cell.qrCodeButton?.rx.tap
+                    .subscribe(onNext: { (_) in
+                        let qrVC = self.storyboard?.instantiateViewController(withIdentifier: "QRCode") as! QRCodeViewController
+                        qrVC.address = dataSource.sectionModels[indexPath.section].items[indexPath.row].address
+                        qrVC.modalPresentationStyle = .overCurrentContext
+                        qrVC.modalTransitionStyle = .flipHorizontal
+                        self.present(qrVC, animated: true, completion: nil)
+                    }).disposed(by: cell.cellBag)
+                
                 return cell
                 
         }, canEditRowAtIndexPath: { dataSource, indexPath in

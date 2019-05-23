@@ -25,6 +25,7 @@
 		1B35F75022890198009F0BBB /* ImportNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B35F74F22890198009F0BBB /* ImportNameViewController.swift */; };
 		1B373E45227C038E00603240 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B373E44227C038E00603240 /* Wallet.swift */; };
 		1B373E48227C324F00603240 /* WalletModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1B373E46227C324F00603240 /* WalletModel.xcdatamodeld */; };
+		1B4EE7DA22964046001918BE /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4EE7D922964046001918BE /* QRCodeViewController.swift */; };
 		1B57BAC82283B2B700AFBD7E /* WalletTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B57BAC72283B2B700AFBD7E /* WalletTableViewCell.swift */; };
 		1B5E6F47227AC4DA00871EF6 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E6F46227AC4DA00871EF6 /* ViewModel.swift */; };
 		1B711D49228966D100AD55F3 /* NetworkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B711D48228966D100AD55F3 /* NetworkCollectionViewCell.swift */; };
@@ -58,6 +59,7 @@
 		1B35F74F22890198009F0BBB /* ImportNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportNameViewController.swift; sourceTree = "<group>"; };
 		1B373E44227C038E00603240 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		1B373E47227C324F00603240 /* WalletModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WalletModel.xcdatamodel; sourceTree = "<group>"; };
+		1B4EE7D922964046001918BE /* QRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
 		1B57BAC72283B2B700AFBD7E /* WalletTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTableViewCell.swift; sourceTree = "<group>"; };
 		1B5E6F46227AC4DA00871EF6 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		1B711D48228966D100AD55F3 /* NetworkCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				1B35F7482288FE20009F0BBB /* NetworkViewController.swift */,
 				1B25ED6A227A9772006F83F4 /* Info.plist */,
 				1B711D48228966D100AD55F3 /* NetworkCollectionViewCell.swift */,
+				1B4EE7D922964046001918BE /* QRCodeViewController.swift */,
 			);
 			path = WalletClone;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				"${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
+				"${BUILT_PRODUCTS_DIR}/PanModal/PanModal.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
@@ -303,6 +307,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigInt.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PanModal.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
@@ -358,6 +363,7 @@
 				1B9B4D642282A3FD00C345BD /* WalletLastViewController.swift in Sources */,
 				1B5E6F47227AC4DA00871EF6 /* ViewModel.swift in Sources */,
 				1B57BAC82283B2B700AFBD7E /* WalletTableViewCell.swift in Sources */,
+				1B4EE7DA22964046001918BE /* QRCodeViewController.swift in Sources */,
 				1B711D49228966D100AD55F3 /* NetworkCollectionViewCell.swift in Sources */,
 				1BA0FB15228BF8FD00A0ADD7 /* TxResultViewController.swift in Sources */,
 				1B25ED5F227A9770006F83F4 /* AppDelegate.swift in Sources */,
