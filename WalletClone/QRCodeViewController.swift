@@ -26,13 +26,6 @@ class QRCodeViewController: UIViewController {
     
     private let alertViewHeight: CGFloat = 300
     
-    let alertView: AlertView = {
-        let alertView = AlertView()
-        alertView.layer.cornerRadius = 10
-        
-        return alertView
-    }()
-    
     let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
