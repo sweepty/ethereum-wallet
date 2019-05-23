@@ -26,6 +26,8 @@ class QRCodeViewController: UIViewController {
     
     private let alertViewHeight: CGFloat = 300
     
+    var brightness = CGFloat(0.5)
+    
     let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
@@ -60,6 +62,15 @@ class QRCodeViewController: UIViewController {
             .subscribe { (_) in
                 self.dismiss(animated: true, completion: nil)
             }.disposed(by: disposeBag)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        brightness = UIScreen.main.brightness
+        UIScreen.main.brightness = CGFloat(1.0)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        UIScreen.main.brightness = self.brightness
     }
     
     
