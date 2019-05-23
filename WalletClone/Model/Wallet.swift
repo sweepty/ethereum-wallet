@@ -147,7 +147,12 @@ class ETHWallet {
                                                completion: @escaping(_: Result<TransactionSendingResult, Error>) -> Void) {
         
         let walletAddress = EthereumAddress(fromAddressString)!
-        let toAddress = EthereumAddress(toAddressString)!
+        
+        guard let toAddress = EthereumAddress(toAddressString) else {
+            completion(.failure(Web3Error.inputError(desc: "보내는 사람이 없습니다.")))
+            return
+        }
+        
         let provider = Ethereum.endpointProvider
         
         let keystore = self.generateKeystoreManager(wallet: wallet)
