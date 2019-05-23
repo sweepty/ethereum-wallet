@@ -29,6 +29,7 @@ class SendTransactionViewController: UIViewController {
     @IBOutlet weak var gasPriceLabel: UILabel!
     
     @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     
     var wallet: Wallet? = nil
     
@@ -43,8 +44,6 @@ class SendTransactionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBar.prefersLargeTitles = false
-        
         setupUI()
         setupBind()
         
@@ -54,8 +53,11 @@ class SendTransactionViewController: UIViewController {
     }
     
     private func setupUI() {
+        self.sendButton.isEnabled = false
+        self.sendButton.backgroundColor = UIColor.gray
         
         self.toStatusLabel.isHidden = true
+        self.toStatusLabel.text = ""
         
         self.amountTextField.delegate = self
         self.gasLimitTextField.delegate = self
@@ -109,13 +111,20 @@ class SendTransactionViewController: UIViewController {
             .bind(to: viewModel.gasLimit)
             .disposed(by: disposeBag)
         
-        viewModel.avaliable
-            .bind(to: sendButton.rx.isHidden)
+        Observable.combineLatest(viewModel.avaliable, viewModel.toAvaliable)
+            .subscribe(onNext: { (a, b) in
+                if a == true && b == true {
+                    self.sendButton.rx.isEnabled.onNext(true)
+                    self.sendButton.rx.backgroundColor.onNext(UIColor.iconMain)
+                } else {
+                    self.sendButton.rx.isEnabled.onNext(false)
+                    self.sendButton.rx.backgroundColor.onNext(UIColor.gray)
+                }
+            })
             .disposed(by: disposeBag)
         
         // amount status
         viewModel.avaliable
-            .map { !$0 }
             .bind(to: amountStatusLabel.rx.isHidden)
             .disposed(by: disposeBag)
         
@@ -133,7 +142,7 @@ class SendTransactionViewController: UIViewController {
                     .map { EthereumAddress($0)?.isValid ?? false }
                     .bind(to: self.viewModel.toAvaliable)
                     .disposed(by: self.disposeBag)
-                
+            
             }).disposed(by: disposeBag)
         
         
@@ -152,7 +161,7 @@ class SendTransactionViewController: UIViewController {
             }).disposed(by: disposeBag)
         
         
-        sendButton.rx.controlEvent(.touchUpInside)
+        sendButton.rx.tap
             .subscribe { (_) in
                 let gasPrice = BigUInt(self.gasPriceSlider.value)
                 let gasLimit = BigUInt(self.gasLimitTextField.text ?? "0")
@@ -185,7 +194,7 @@ class SendTransactionViewController: UIViewController {
                         let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
                         let cancel = UIAlertAction(title: "OK", style: .default, handler: nil)
                         alert.addAction(cancel)
-                        alert.present(self, animated: true, completion: nil)
+                        self.present(alert, animated: true, completion: nil)
                     }
                 })
                     // 테스트용

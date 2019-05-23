@@ -32,6 +32,7 @@ class TransactionViewModel {
     let result: PublishSubject<TransactionSendingResult>
     
     let disposeBag = DisposeBag()
+    
     init() {
         self.balance = PublishSubject<BigUInt>()
         self.amount = PublishSubject<BigUInt>()
@@ -50,14 +51,14 @@ class TransactionViewModel {
         self.result = PublishSubject<TransactionSendingResult>()
 
         Observable.combineLatest(balance, amount, gasLimit)
-            .map { $0.1*1000000000 + $0.2 > $0.0*1000000000 }
+            .map { $0.1*1000000000 + $0.2 < $0.0*1000000000 }
             .bind(to: self.avaliable)
             .disposed(by: disposeBag)
         
         avaliable.asObservable()
             .distinctUntilChanged()
             .subscribe(onNext: { (checker) in
-                checker ? self.amountStaus.onNext("보유 수량보다 작은 값을 입력하세요.") : self.amountStaus.onNext("GOOD")
+                checker ? self.amountStaus.onNext("GOOD") : self.amountStaus.onNext("보유 수량보다 작은 값을 입력하세요.")
             }).disposed(by: disposeBag)
         
         
