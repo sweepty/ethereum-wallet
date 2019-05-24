@@ -246,7 +246,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rbI-Wu-jnF" customClass="CardView" customModule="WalletClone" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="81.333333333333314" width="375" height="730.66666666666674"/>
+                                <rect key="frame" x="0.0" y="40.666666666666686" width="375" height="771.33333333333326"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kd5-tV-ZJQ">
                                         <rect key="frame" x="93.666666666666671" y="100.00000000000001" width="187.66666666666663" height="187.33333333333337"/>
@@ -264,7 +264,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B6r-bw-HjZ">
-                                                <rect key="frame" x="292.66666666666663" y="18.666666666666686" width="25" height="25"/>
+                                                <rect key="frame" x="292.66666666666663" y="19" width="25" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="B6r-bw-HjZ" secondAttribute="height" multiplier="1:1" id="bYp-Kq-hHD"/>
                                                 </constraints>
@@ -315,7 +315,7 @@
                             <constraint firstItem="Age-pA-ltA" firstAttribute="trailing" secondItem="rbI-Wu-jnF" secondAttribute="trailing" id="LN7-un-Oep"/>
                             <constraint firstItem="rbI-Wu-jnF" firstAttribute="leading" secondItem="Age-pA-ltA" secondAttribute="leading" id="SBe-dz-3wY"/>
                             <constraint firstItem="rbI-Wu-jnF" firstAttribute="bottom" secondItem="Age-pA-ltA" secondAttribute="bottom" constant="34" id="XzB-bZ-daw"/>
-                            <constraint firstItem="rbI-Wu-jnF" firstAttribute="height" secondItem="gzR-gu-Mvf" secondAttribute="height" multiplier="0.9" id="h4e-o7-rMu"/>
+                            <constraint firstItem="rbI-Wu-jnF" firstAttribute="height" secondItem="gzR-gu-Mvf" secondAttribute="height" multiplier="0.95" id="h4e-o7-rMu"/>
                             <constraint firstItem="rbI-Wu-jnF" firstAttribute="width" secondItem="gzR-gu-Mvf" secondAttribute="width" id="hjp-nW-Bnd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Age-pA-ltA"/>

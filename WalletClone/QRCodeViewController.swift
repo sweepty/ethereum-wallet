@@ -33,7 +33,7 @@ class QRCodeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.black.withAlphaComponent(0)
+        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.2)
         
         // 주소 쳌
         guard !address.isEmpty else {

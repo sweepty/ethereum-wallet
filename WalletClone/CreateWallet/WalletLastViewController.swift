@@ -13,7 +13,9 @@ import Web3swift
 
 class WalletLastViewController: UIViewController {
 
-    @IBOutlet weak var privateKeyTextField: UITextField!
+    @IBOutlet weak var privateKeyLabel: UILabel!
+    @IBOutlet weak var copyButton: UIButton!
+    
     @IBOutlet weak var doneButton: UIButton!
     
     var password: String?
@@ -28,17 +30,10 @@ class WalletLastViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        setupUI()
         setupBind()
     }
     
-    private func setupUI() {
-        self.privateKeyTextField.isUserInteractionEnabled = false
-    }
-    
     private func setupBind() {
-//        self.viewModel.walletList.onNext(ETHWallet.selectAllWallet())
-        
         viewModel.walletList
             .subscribe(onNext: { (wallet) in
                 print("새로운 지갑 생성됨 \(wallet)")
@@ -53,8 +48,13 @@ class WalletLastViewController: UIViewController {
             }.disposed(by: disposeBag)
 
         extractPk()
-            .bind(to: privateKeyTextField.rx.text)
+            .bind(to: privateKeyLabel.rx.text)
             .disposed(by: disposeBag)
+        
+        copyButton.rx.tap
+            .subscribe { (_) in
+                UIPasteboard.general.string = self.privateKeyLabel.text!
+            }.disposed(by: disposeBag)
         
     }
     
@@ -67,7 +67,7 @@ class WalletLastViewController: UIViewController {
             return Observable.just("비번 없음")
         }
         
-        let pk = ETHWallet.extractPrivateKey(password: pwd, wallet: wallet)
+        let pk = try! ETHWallet.extractPrivateKey(password: pwd, wallet: wallet)
         return Observable.just(pk)
     }
     
