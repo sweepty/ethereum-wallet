@@ -12,6 +12,7 @@ import RxCocoa
 
 class ImportNameViewController: UIViewController {
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var statusProgressView: UIProgressView!
@@ -26,7 +27,7 @@ class ImportNameViewController: UIViewController {
 
         setupBind()
     }
-    
+
     private func setupBind() {
         let validatePassword = passwordTextField.rx.text.orEmpty
             .map { $0.validate() }
@@ -72,6 +73,17 @@ class ImportNameViewController: UIViewController {
                 return false
             }.bind(to: doneButton.rx.isEnabled)
             .disposed(by: disposeBag)
+        
+        keyboardHeight()
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [unowned self] (keyboardHeight: CGFloat) in
+                if keyboardHeight == 0 {
+                    self.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+                } else {
+                    self.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight - self.view.safeAreaInsets.bottom, right: 0)
+                }
+                self.scrollView.scrollIndicatorInsets = self.scrollView.contentInset
+            }).disposed(by: disposeBag)
     }
     
 

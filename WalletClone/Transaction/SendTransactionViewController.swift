@@ -14,6 +14,8 @@ import BigInt
 
 class SendTransactionViewController: UIViewController {
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var balanceLabel: UILabel!
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var toTextField: UITextField!
@@ -47,9 +49,9 @@ class SendTransactionViewController: UIViewController {
         setupUI()
         setupBind()
         
-        if let isAddress = UIPasteboard.general.string, EthereumAddress(isAddress)?.isValid == true {
-            self.toTextField.text = isAddress
-        }
+//        if let isAddress = UIPasteboard.general.string, EthereumAddress(isAddress)?.isValid == true {
+//            self.toTextField.text = isAddress
+//        }
     }
     
     private func setupUI() {
@@ -211,18 +213,18 @@ class SendTransactionViewController: UIViewController {
             }).disposed(by: disposeBag)
         
         viewModel.balance.onNext(BigUInt(Double(Ethereum.getBalance(walletAddress: self.wallet!.address)!)!))
+        
+        keyboardHeight()
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [unowned self] (keyboardHeight: CGFloat) in
+                if keyboardHeight == 0 {
+                    self.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+                } else {
+                    self.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight - self.view.safeAreaInsets.bottom, right: 0)
+                }
+                self.scrollView.scrollIndicatorInsets = self.scrollView.contentInset
+            }).disposed(by: disposeBag)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension SendTransactionViewController: UITextFieldDelegate {
