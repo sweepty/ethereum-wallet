@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import PanModal
 import RxSwift
 import RxCocoa
 import CoreImage
