@@ -24,21 +24,48 @@
                                 <viewLayoutGuide key="safeArea" id="mHa-2f-Wl7"/>
                                 <color key="sectionIndexBackgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="qRq-PH-2np">
-                                    <rect key="frame" x="0.0" y="213" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="213" width="375" height="98"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Zs-Ot-5z0">
-                                            <rect key="frame" x="25" y="0.0" width="92" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Create Wallet"/>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F9V-88-KXx">
-                                            <rect key="frame" x="156" y="0.0" width="200" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="import Wallet with privateKey"/>
-                                        </button>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="tSJ-Od-ESp">
+                                            <rect key="frame" x="0.0" y="5" width="375" height="88"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Zs-Ot-5z0" customClass="RoundButton" customModule="WalletClone" customModuleProvider="target">
+                                                    <rect key="frame" x="56.333333333333343" y="0.0" width="262.33333333333326" height="40"/>
+                                                    <color key="backgroundColor" red="0.4039215686" green="0.1560627140410959" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="tintColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal" title="Create Wallet"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F9V-88-KXx" customClass="RoundButton" customModule="WalletClone" customModuleProvider="target">
+                                                    <rect key="frame" x="56.333333333333343" y="48" width="262.33333333333326" height="40"/>
+                                                    <color key="backgroundColor" red="0.4039215686" green="0.11574272260273973" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="tintColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal" title="import Wallet with privateKey"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="F9V-88-KXx" firstAttribute="width" secondItem="3Zs-Ot-5z0" secondAttribute="width" id="1iq-HQ-Uxv"/>
+                                                <constraint firstItem="3Zs-Ot-5z0" firstAttribute="width" secondItem="tSJ-Od-ESp" secondAttribute="width" multiplier="0.7" id="Ddf-Dq-8kS"/>
+                                            </constraints>
+                                        </stackView>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="tSJ-Od-ESp" firstAttribute="height" secondItem="qRq-PH-2np" secondAttribute="height" multiplier="0.9" id="0kd-Ci-IQa"/>
+                                        <constraint firstItem="tSJ-Od-ESp" firstAttribute="centerY" secondItem="qRq-PH-2np" secondAttribute="centerY" id="CTt-ce-Wts"/>
+                                        <constraint firstItem="tSJ-Od-ESp" firstAttribute="width" secondItem="qRq-PH-2np" secondAttribute="width" id="Sf3-3h-Dd5"/>
+                                        <constraint firstItem="tSJ-Od-ESp" firstAttribute="centerX" secondItem="qRq-PH-2np" secondAttribute="centerX" id="XxC-3C-6Ql"/>
+                                    </constraints>
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="185" id="U4f-92-3Aw" customClass="WalletTableViewCell" customModule="WalletClone" customModuleProvider="target">
@@ -49,32 +76,32 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Zt-Hb-okj" customClass="CardView" customModule="WalletClone" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="10" width="355" height="164.66666666666666"/>
+                                                    <rect key="frame" x="9.3333333333333428" y="4.6666666666666714" width="356.33333333333326" height="175.33333333333331"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBm-mt-pog">
-                                                            <rect key="frame" x="17.666666666666657" y="20" width="319.66666666666674" height="24"/>
+                                                            <rect key="frame" x="18" y="20" width="320.33333333333331" height="24"/>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xLg-ta-b0p">
-                                                            <rect key="frame" x="17.666666666666664" y="132.33333333333334" width="68.666666666666686" height="24"/>
+                                                            <rect key="frame" x="18" y="132.33333333333334" width="69" height="24"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ETH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2N-cx-xJS">
-                                                            <rect key="frame" x="106.33333333333333" y="134.33333333333334" width="32.999999999999986" height="20.333333333333343"/>
+                                                            <rect key="frame" x="95" y="134.33333333333334" width="33" height="20"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wAQ-dC-7iW">
-                                                            <rect key="frame" x="307" y="69" width="33.333333333333314" height="33.333333333333343"/>
+                                                            <rect key="frame" x="308" y="69" width="33.333333333333314" height="33.333333333333343"/>
                                                             <state key="normal" image="QRCode"/>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0xec6C8F35Df20177007C3036B81D840C032f63180" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ebq-ya-oAb">
-                                                            <rect key="frame" x="17.666666666666671" y="69" width="248.66666666666663" height="33.333333333333343"/>
+                                                            <rect key="frame" x="18.000000000000014" y="69" width="249.33333333333337" height="33.333333333333343"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -84,7 +111,7 @@
                                                     <constraints>
                                                         <constraint firstItem="ebq-ya-oAb" firstAttribute="top" secondItem="aBm-mt-pog" secondAttribute="bottom" constant="25" id="5q3-0j-SZ7"/>
                                                         <constraint firstItem="h2N-cx-xJS" firstAttribute="centerY" secondItem="xLg-ta-b0p" secondAttribute="centerY" id="GhC-W4-gnb"/>
-                                                        <constraint firstItem="h2N-cx-xJS" firstAttribute="leading" secondItem="xLg-ta-b0p" secondAttribute="trailing" constant="20" id="Npw-Kx-qpE"/>
+                                                        <constraint firstItem="h2N-cx-xJS" firstAttribute="leading" secondItem="xLg-ta-b0p" secondAttribute="trailing" constant="8" symbolic="YES" id="Npw-Kx-qpE"/>
                                                         <constraint firstItem="wAQ-dC-7iW" firstAttribute="leading" secondItem="ebq-ya-oAb" secondAttribute="trailing" constant="40.666666666666686" id="SBR-3r-OGV"/>
                                                         <constraint firstItem="ebq-ya-oAb" firstAttribute="width" secondItem="4Zt-Hb-okj" secondAttribute="width" multiplier="0.7" id="UEn-GF-Z09"/>
                                                         <constraint firstItem="xLg-ta-b0p" firstAttribute="leading" secondItem="ebq-ya-oAb" secondAttribute="leading" id="WLD-2i-0bC"/>
@@ -104,10 +131,10 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="4Zt-Hb-okj" secondAttribute="trailing" constant="10" id="2gq-Ga-DAU"/>
-                                                <constraint firstItem="4Zt-Hb-okj" firstAttribute="leading" secondItem="p6G-JM-jTC" secondAttribute="leading" constant="10" id="SOY-9B-juE"/>
-                                                <constraint firstItem="4Zt-Hb-okj" firstAttribute="top" secondItem="p6G-JM-jTC" secondAttribute="top" constant="10" id="bRK-il-FWn"/>
-                                                <constraint firstAttribute="bottom" secondItem="4Zt-Hb-okj" secondAttribute="bottom" constant="10" id="eNn-pi-Rf3"/>
+                                                <constraint firstItem="4Zt-Hb-okj" firstAttribute="height" secondItem="p6G-JM-jTC" secondAttribute="height" multiplier="0.95" id="MH0-yR-OBb"/>
+                                                <constraint firstItem="4Zt-Hb-okj" firstAttribute="centerY" secondItem="p6G-JM-jTC" secondAttribute="centerY" id="gop-ra-Kx0"/>
+                                                <constraint firstItem="4Zt-Hb-okj" firstAttribute="centerX" secondItem="p6G-JM-jTC" secondAttribute="centerX" id="mKt-Xw-QBp"/>
+                                                <constraint firstItem="4Zt-Hb-okj" firstAttribute="width" secondItem="p6G-JM-jTC" secondAttribute="width" multiplier="0.95" id="rdf-8q-bfv"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
